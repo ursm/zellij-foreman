@@ -6,3 +6,8 @@ edition = "2021"
 [dependencies]
 regex = "1.10.5"
 zellij-tile = "0.40.1"
+
+[profile.release]
+codegen-units = 1
+lto = true
+strip = "symbols"
