@@ -8,6 +8,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - run: rustup target add wasm32-wasi
       - run: cargo build --release
 
       - uses: softprops/action-gh-release@v2
