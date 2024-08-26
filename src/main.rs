@@ -65,9 +65,26 @@ impl ZellijPlugin for ZellijForeman {
 fn parse_procfile(procfile: &str) -> Vec<(&str, &str)> {
     let re = Regex::new(r"(?m)^([\w-]+):\s*(.+)$").unwrap();
 
-    re.captures_iter(procfile).map(|c| {
-        let (_, [name, command]) = c.extract();
+    re.captures_iter(procfile)
+        .map(|c| {
+            let (_, [name, command]) = c.extract();
 
-        (name, command)
-    }).collect()
+            (name, command)
+        })
+        .collect()
+}
+
+#[test]
+fn test_parse_procfile() {
+    let procfile = r#"
+web: npm start
+
+api: npm run api
+# comment one
+comment two
+    "#;
+
+    let entries = parse_procfile(procfile);
+
+    assert_eq!(entries, vec![("web", "npm start"), ("api", "npm run api"),]);
 }

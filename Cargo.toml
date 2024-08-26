@@ -9,5 +9,7 @@ zellij-tile = "0.40.1"
 
 [profile.release]
 codegen-units = 1
+opt-level = "s"
+debug = false
+strip = true
 lto = true
-strip = "symbols"
