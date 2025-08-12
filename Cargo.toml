@@ -5,7 +5,7 @@ edition = "2024"
 
 [dependencies]
 regex = "1.11.1"
-zellij-tile = "0.42.2"
+zellij-tile = "0.43.1"
 
 [profile.release]
 codegen-units = 1
