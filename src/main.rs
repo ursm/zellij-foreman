@@ -36,8 +36,8 @@ impl ZellijPlugin for ZellijForeman {
         let data = String::from_utf8_lossy(&data);
         let entries = parse_procfile(&data);
 
-        if let Some(((_name, command), rest)) = entries.split_first() {
-            open_command_pane_in_place(
+        for (_name, command) in &entries {
+            open_command_pane(
                 CommandToRun {
                     path: PathBuf::from("sh"),
                     args: vec!["-c".to_string(), command.to_string()],
@@ -45,18 +45,9 @@ impl ZellijPlugin for ZellijForeman {
                 },
                 BTreeMap::new(),
             );
-
-            for (_name, command) in rest {
-                open_command_pane(
-                    CommandToRun {
-                        path: PathBuf::from("sh"),
-                        args: vec!["-c".to_string(), command.to_string()],
-                        cwd: None,
-                    },
-                    BTreeMap::new(),
-                );
-            }
         }
+
+        close_self();
 
         false
     }
