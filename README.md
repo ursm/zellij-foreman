@@ -7,13 +7,13 @@ A Zellij plugin to load a Procfile similar to Foreman.
 To use Zellij Foreman, load the plugin with the `zellij plugin` command as shown below. By default, it reads a file named `Procfile` in the current directory:
 
 ```
-$ zellij plugin -- https://github.com/ursm/zellij-foreman/releases/download/v0.1.2/zellij-foreman.wasm
+$ zellij plugin -- https://github.com/ursm/zellij-foreman/releases/download/v0.1.3/zellij-foreman.wasm
 ```
 
 To specify a different Procfile, use the `--configuration` option to set the filename. The following example specifies a file named `Procfile.dev`:
 
 ```
-$ zellij plugin --configuration procfile=Procfile.dev -- https://github.com/ursm/zellij-foreman/releases/download/v0.1.2/zellij-foreman.wasm
+$ zellij plugin --configuration procfile=Procfile.dev -- https://github.com/ursm/zellij-foreman/releases/download/v0.1.3/zellij-foreman.wasm
 ```
 
 This will start the processes listed in the specified Procfile within Zellij.
