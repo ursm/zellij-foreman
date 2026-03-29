@@ -22,7 +22,10 @@ impl ZellijPlugin for ZellijForeman {
     }
 
     fn update(&mut self, event: Event) -> bool {
-        if !matches!(event, Event::PermissionRequestResult(PermissionStatus::Granted)) {
+        if !matches!(
+            event,
+            Event::PermissionRequestResult(PermissionStatus::Granted)
+        ) {
             return false;
         }
 
