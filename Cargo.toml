@@ -1,11 +1,11 @@
 [package]
 name = "zellij-foreman"
-version = "0.1.3"
+version = "0.1.4"
 edition = "2024"
 
 [dependencies]
 regex = "1.12.3"
-zellij-tile = "0.43.1"
+zellij-tile = "0.44.0"
 
 [profile.release]
 codegen-units = 1

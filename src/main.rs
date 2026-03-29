@@ -17,10 +17,15 @@ impl ZellijPlugin for ZellijForeman {
     fn load(&mut self, config: BTreeMap<String, String>) {
         self.config = config;
 
+        subscribe(&[EventType::PermissionRequestResult]);
         request_permission(&[PermissionType::RunCommands]);
     }
 
-    fn update(&mut self, _event: Event) -> bool {
+    fn update(&mut self, event: Event) -> bool {
+        if !matches!(event, Event::PermissionRequestResult(PermissionStatus::Granted)) {
+            return false;
+        }
+
         let procfile = "Procfile".to_string();
         let procfile = self.config.get("procfile").unwrap_or(&procfile);
 
