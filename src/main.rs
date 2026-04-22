@@ -50,7 +50,7 @@ impl ZellijPlugin for ZellijForeman {
             open_command_pane(
                 CommandToRun {
                     path: PathBuf::from("sh"),
-                    args: vec!["-c".to_string(), command.to_string()],
+                    args: vec!["-c".to_string(), format!("exec {}", command)],
                     cwd: Some(cwd.clone()),
                 },
                 BTreeMap::new(),
