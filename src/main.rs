@@ -44,12 +44,14 @@ impl ZellijPlugin for ZellijForeman {
         let data = String::from_utf8_lossy(&data);
         let entries = parse_procfile(&data);
 
+        let cwd = get_plugin_ids().initial_cwd;
+
         for (_name, command) in &entries {
             open_command_pane(
                 CommandToRun {
                     path: PathBuf::from("sh"),
                     args: vec!["-c".to_string(), command.to_string()],
-                    cwd: None,
+                    cwd: Some(cwd.clone()),
                 },
                 BTreeMap::new(),
             );
