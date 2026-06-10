@@ -4,7 +4,7 @@ version = "0.1.5"
 edition = "2024"
 
 [dependencies]
-regex = "1.12.3"
+regex = "1.12.4"
 zellij-tile = "0.44.3"
 
 [profile.release]
