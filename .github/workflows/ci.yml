@@ -19,7 +19,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v7
-      - run: cargo clippy
+      - run: rustup target add wasm32-wasip1
+      - run: cargo clippy --target wasm32-wasip1
 
   fmt:
     runs-on: ubuntu-latest
