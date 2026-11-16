@@ -52,6 +52,7 @@ impl ZellijPlugin for ZellijForeman {
                     path: PathBuf::from("sh"),
                     args: vec!["-c".to_string(), command.to_string()],
                     cwd: Some(cwd.clone()),
+                    ..Default::default()
                 },
                 BTreeMap::new(),
             );
